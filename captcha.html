@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captcha generation</title>
+</head>
+<body>
+    <div id="cap"></div> <button onclick="cap()">GENERATE </button>
+    <h1>CAPTCHA VALIDATION </h1>
+    <br>
+    <input type="text" name="capctcha" id="valid">
+    <button onclick="valid()">VALID CAPCTCHA</button>
+    <br>
+    <div id="result"></div>
+    <script>
+        let generate=''
+        function cap(){
+            let c='ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz'
+            let cap=''
+            for(let i=0;i<4;i++){
+                cap+=c.charAt(Math.floor(Math.random()*c.length))
+                
+            }
+            document.getElementById('cap').innerHTML=cap;
+            generate=cap
+
+
+        }
+        function valid(){
+            let user=document.getElementById('valid').value 
+            let result=document.getElementById('result')
+            // let g=generate
+            if (user===generate){
+                result.innerText='you sucessfully longined'
+                result.style.color='green';
+                result.style.fontSize='20px'
+
+            }
+            else{
+                result.innerText='please enter valid captcha'
+                result.style.color='red';
+                result.style.fontSize='20px'
+            }
+        }
+    </script>
+</body>
+</html>
